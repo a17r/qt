@@ -79,6 +79,11 @@ case ${PV} in
 		QT5_BUILD_TYPE="live"
 		EGIT_BRANCH=${PV%.9999}
 		;;
+	5.?.?.9999)
+		# git very stable branch
+		QT5_BUILD_TYPE="live"
+		EGIT_BRANCH=${PV%.9999}
+		;;
 	*_alpha*|*_beta*|*_rc*)
 		# development release
 		QT5_BUILD_TYPE="release"
