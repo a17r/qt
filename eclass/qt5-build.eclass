@@ -288,9 +288,11 @@ qt5-build_src_install() {
 			qmake_install_target=sub-qmake-qmake-aux-pro-install_subtargets
 		fi
 
-		set -- emake INSTALL_ROOT="${D}" \
-			${qmake_install_target} \
-			install_{syncqt,mkspecs,global_docs}
+		qmake_install_target+=" install_syncqt install_mkspecs"
+		if [[ ${QT5_MINOR_VERSION} -le 7 && $(get_version_component_range 3) -lt 1 ]] ; then
+			qmake_install_target+=" install_global_docs"
+		fi
+		set -- emake INSTALL_ROOT="${D}" ${qmake_install_target}
 		einfo "Running $*"
 		"$@"
 
