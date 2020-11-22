@@ -29,6 +29,8 @@ RDEPEND="
 	!<dev-qt/qtcore-5.15.2-r2:5
 "
 
+PATCHES=( "${FILESDIR}/${PN}-66-qt-5.15.2-compat.patch" )
+
 qtchooser_make() {
 	emake \
 		CXX="$(tc-getCXX)" \
