@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit qt5-build
 
 DESCRIPTION="3D rendering module for the Qt5 framework"
@@ -22,7 +23,9 @@ DEPEND="
 	gamepad? ( ~dev-qt/qtgamepad-${PV} )
 	qml? ( ~dev-qt/qtdeclarative-${PV}[gles2-only=] )
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	dev-qt/qtchooser
+"
 
 src_prepare() {
 	rm -r src/3rdparty/assimp/{code,contrib,include} || die
