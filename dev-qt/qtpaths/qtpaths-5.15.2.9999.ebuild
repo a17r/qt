@@ -22,3 +22,8 @@ RDEPEND="${DEPEND}"
 QT5_TARGET_SUBDIRS=(
 	src/qtpaths
 )
+
+src_install() {
+	qt5-build_src_install
+	qt5_symlink_binary_to_path qtpaths 5
+}
