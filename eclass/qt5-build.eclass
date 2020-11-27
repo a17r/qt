@@ -101,7 +101,16 @@ fi
 : ${QT5_BUILD_DIR:=${S}_build}
 
 LICENSE="|| ( GPL-2 GPL-3 LGPL-3 ) FDL-1.3"
-SLOT=5/$(ver_cut 1-2)
+
+case ${PN} in
+	assistant|linguist|qdbus|qdbusviewer)
+		SLOT=0 ;;
+	linguist-tools|qtdiag|qtimageformats|qtpaths|qttranslations)
+		SLOT=5 ;;
+	*)
+		SLOT=5/$(ver_cut 1-2) ;;
+esac
+
 IUSE="debug test"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
