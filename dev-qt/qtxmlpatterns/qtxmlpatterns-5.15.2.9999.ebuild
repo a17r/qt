@@ -18,7 +18,9 @@ DEPEND="
 	=dev-qt/qtnetwork-${QT5_PV}*
 	qml? ( =dev-qt/qtdeclarative-${QT5_PV}* )
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	!<dev-qt/qtchooser-66-r2
+"
 
 src_prepare() {
 	qt_use_disable_mod qml qml \
@@ -28,4 +30,10 @@ src_prepare() {
 	qt_use_disable_mod qml quick tests/auto/auto.pro
 
 	qt5-build_src_prepare
+}
+
+src_install() {
+	qt5-build_src_install
+	qt5_symlink_binary_to_path xmlpatterns
+	qt5_symlink_binary_to_path xmlpatternsvalidator
 }
