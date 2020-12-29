@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,6 +7,8 @@ QT5_MODULE="qtbase"
 inherit linux-info qt5-build
 
 DESCRIPTION="Cross-platform application development framework"
+SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/qtbase-${PV}-gcc11.patch.xz"
+
 SLOT=5/$(ver_cut 1-3)
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
@@ -47,6 +49,9 @@ QT5_GENTOO_PRIVATE_CONFIG=(
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.14.1-cmake-macro-backward-compat.patch  # bug 703306
 	"${FILESDIR}"/${PN}-5.15.1-timezone-{1,2}.patch # bug 737914
+	"${FILESDIR}"/${P}-fix-UB-in-QDateTime.patch # QTBUG-88656
+	"${FILESDIR}"/${P}-fix-alloc-mem-of-QByteArray.patch # QTBUG-87010
+	"${WORKDIR}"/qtbase-${PV}-gcc11.patch # bug 752012
 )
 
 pkg_pretend() {
