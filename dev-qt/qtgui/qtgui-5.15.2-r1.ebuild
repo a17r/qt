@@ -3,11 +3,11 @@
 
 EAPI=7
 
+KDE_ORG_COMMIT=cfa90a94f95510711e25920e7742b37faa2f4843
 QT5_MODULE="qtbase"
 inherit qt5-build
 
 DESCRIPTION="The GUI module and platform plugins for the Qt5 framework"
-SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/qtbase-${PV}-gcc11.patch.xz"
 
 SLOT=5/$(ver_cut 1-3) # bug 707658
 
@@ -132,8 +132,6 @@ QT5_GENTOO_PRIVATE_CONFIG=(
 PATCHES=(
 	"${FILESDIR}/qt-5.12-gcc-avx2.patch" # bug 672946
 	"${FILESDIR}/${PN}-5.14.1-cmake-macro-backward-compat.patch" # bug 703306
-	"${FILESDIR}/${P}-bogus-xcb-util-dep.patch" # QTBUG-86287, QTBUG-88688
-	"${WORKDIR}"/qtbase-${PV}-gcc11.patch # bug 764038
 )
 
 src_prepare() {

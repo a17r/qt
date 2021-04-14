@@ -3,11 +3,11 @@
 
 EAPI=7
 
+KDE_ORG_COMMIT=cfa90a94f95510711e25920e7742b37faa2f4843
 QT5_MODULE="qtbase"
 inherit qt5-build
 
 DESCRIPTION="Network abstraction library for the Qt5 framework"
-SRC_URI+=" https://dev.gentoo.org/~asturm/distfiles/qtbase-${PV}-gcc11.patch.xz"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
@@ -44,11 +44,6 @@ QT5_GENTOO_CONFIG=(
 
 QT5_GENTOO_PRIVATE_CONFIG=(
 	:network
-)
-
-PATCHES=(
-	"${FILESDIR}"/${P}-QNetworkAccessManager-memleak.patch # QTBUG-88063
-	"${WORKDIR}"/qtbase-${PV}-gcc11.patch # bug 752012
 )
 
 pkg_setup() {
