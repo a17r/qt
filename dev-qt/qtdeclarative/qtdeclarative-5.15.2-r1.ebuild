@@ -1,9 +1,10 @@
-# Copyright 2009-2020 Gentoo Authors
+# Copyright 2009-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+KDE_ORG_COMMIT=e203a185cfab199a89a33b903096d6d0023a8a88
+PYTHON_COMPAT=( python3_{6..9} )
 inherit python-any-r1 qt5-build
 
 DESCRIPTION="The QML and Quick modules for the Qt5 framework"
@@ -28,7 +29,6 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-5.14.2-QQuickItemView-fix-maxXY-extent.patch" # QTBUG-83890
-	"${FILESDIR}/${P}-gcc11.patch" # bug 752093
 )
 
 src_prepare() {
