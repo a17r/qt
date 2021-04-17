@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
+KDE_ORG_COMMIT=33693a928986006d79c1ee743733cde5966ac402
 QT5_MODULE="qttools"
 inherit desktop qt5-build xdg-utils
 
